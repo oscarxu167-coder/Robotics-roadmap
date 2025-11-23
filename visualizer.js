@@ -46,7 +46,7 @@ class Visualizer {
         
         // Speed control
         document.getElementById('speed').addEventListener('input', (e) => {
-            this.speed = parseInt(e.target.value);
+            this.speed = parseInt(e.target.value, 10);
             document.getElementById('speed-value').textContent = this.speed;
         });
         
@@ -373,6 +373,18 @@ class Visualizer {
         if (this.currentFrame < this.history.length - 1) {
             this.currentFrame++;
             this.stats.steps++;
+            
+            // Track comparisons and swaps for sorting
+            if (this.currentProblem === 'sorting' && this.history[this.currentFrame]) {
+                const frame = this.history[this.currentFrame];
+                if (frame.comparing && frame.comparing.length > 0) {
+                    this.stats.comparisons++;
+                }
+                if (frame.swapping && frame.swapping.length > 0) {
+                    this.stats.swaps++;
+                }
+            }
+            
             this.updateStats();
             this.draw();
         }
@@ -471,10 +483,8 @@ class Visualizer {
             let color = '#3b82f6';
             if (state.comparing && state.comparing.includes(idx)) {
                 color = '#f59e0b';
-                this.stats.comparisons++;
             } else if (state.swapping && state.swapping.includes(idx)) {
                 color = '#ef4444';
-                this.stats.swaps++;
             }
             
             this.ctx.fillStyle = color;
