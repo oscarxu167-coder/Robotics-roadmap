@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USACO Bronze Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 USACO Bronze Visualizer</h1>
+            <p class="subtitle">Interactive Algorithm Visualization for Competitive Programming</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Problem Selector -->
+            <section class="problem-selector">
+                <h2>Select a Problem Type</h2>
+                <div class="problem-buttons">
+                    <button class="problem-btn active" data-problem="simulation">Simulation</button>
+                    <button class="problem-btn" data-problem="sorting">Sorting</button>
+                    <button class="problem-btn" data-problem="grid">Grid Traversal</button>
+                    <button class="problem-btn" data-problem="array">Array Manipulation</button>
+                </div>
+            </section>
+
+            <!-- Visualization Area -->
+            <section class="visualization-area">
+                <div class="viz-header">
+                    <h3 id="problem-title">Cow Movement Simulation</h3>
+                    <p id="problem-description">Visualize how cows move in a barn.</p>
+                </div>
+                
+                <div class="canvas-container">
+                    <canvas id="visualizer" width="800" height="400"></canvas>
+                </div>
+
+                <!-- Control Panel -->
+                <div class="controls">
+                    <button id="reset-btn" class="control-btn">↺ Reset</button>
+                    <button id="step-btn" class="control-btn">→ Step</button>
+                    <button id="play-btn" class="control-btn">▶ Play</button>
+                    <button id="pause-btn" class="control-btn" style="display: none;">⏸ Pause</button>
+                    <div class="speed-control">
+                        <label for="speed">Speed:</label>
+                        <input type="range" id="speed" min="1" max="10" value="5">
+                        <span id="speed-value">5</span>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="statistics">
+                    <div class="stat-item">
+                        <span class="stat-label">Step:</span>
+                        <span id="step-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Comparisons:</span>
+                        <span id="comparison-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Swaps:</span>
+                        <span id="swap-count">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Input Area -->
+            <section class="input-area">
+                <h3>Custom Input</h3>
+                <div class="input-controls">
+                    <textarea id="custom-input" placeholder="Enter custom input data...
+Example for sorting: 5 2 8 1 9 3
+Example for grid: 
+3 3
+...
+#.#
+..."></textarea>
+                    <button id="load-input-btn" class="control-btn">Load Input</button>
+                    <button id="generate-random-btn" class="control-btn">Generate Random</button>
+                </div>
+            </section>
+
+            <!-- Algorithm Explanation -->
+            <section class="explanation-area">
+                <h3>Algorithm Explanation</h3>
+                <div id="algorithm-steps" class="algorithm-steps">
+                    <p>Select a problem type to see the algorithm explanation.</p>
+                </div>
+            </section>
+
+            <!-- Sample Problems -->
+            <section class="sample-problems">
+                <h3>Sample USACO Bronze Problems</h3>
+                <div class="problem-list">
+                    <div class="problem-card">
+                        <h4>The Cow Signal (Bronze 2016 Dec)</h4>
+                        <p>Bessie needs to amplify a signal pattern by scaling it up.</p>
+                        <button class="load-problem-btn" data-problem-id="cow-signal">Try This Problem</button>
+                    </div>
+                    <div class="problem-card">
+                        <h4>Milk Pails (Bronze 2016 Feb)</h4>
+                        <p>Find all possible amounts of milk using two pail sizes.</p>
+                        <button class="load-problem-btn" data-problem-id="milk-pails">Try This Problem</button>
+                    </div>
+                    <div class="problem-card">
+                        <h4>The Lost Cow (Bronze 2017 US Open)</h4>
+                        <p>John's cow has wandered away. How far must he travel to find it?</p>
+                        <button class="load-problem-btn" data-problem-id="lost-cow">Try This Problem</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>Built for USACO Bronze learners | <a href="http://www.usaco.org/" target="_blank">Visit USACO</a></p>
+        </footer>
+    </div>
+
+    <script src="visualizer.js"></script>
+</body>
+</html>
